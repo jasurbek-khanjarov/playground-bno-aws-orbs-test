@@ -1,0 +1,22 @@
+version: 2.1
+
+orbs:
+  aws-ecr: circleci/aws-ecr@8.0.0
+  aws-s3: circleci/aws-s3@3.0.0
+  aws-cli: circleci/aws-cli@2.1.0
+  aws-eks: circleci/aws-eks@2.1.1
+
+jobs:
+  aws-cli-jobs:
+    docker:
+      - image: 'cimg/base:2022.03'
+    steps:
+      - checkout
+      - aws-ecr/ecr-login
+  
+workflows:
+  test-cci-aws-orbs:
+    jobs:
+      - aws-cli-jobs
+          context: aws-secrets-new
+      
