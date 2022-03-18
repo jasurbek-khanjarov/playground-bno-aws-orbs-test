@@ -17,6 +17,6 @@ jobs:
 workflows:
   test-cci-aws-orbs:
     jobs:
-      - aws-cli-jobs
+      - aws-cli-jobs:
           context: jasur-aws-s3
       
